@@ -19,4 +19,8 @@ class AccountsService {
         accountsRepository.findAll()
     }
 
+    def get(accountId){
+        accountsRepository.findById(accountId)
+    }
+
 }

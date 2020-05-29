@@ -7,11 +7,11 @@ import org.springframework.data.mongodb.core.mapping.Document
 class Accounts {
 
     @Id
-    String accountId
+    Long accountId
     Long documentNumber
     Date lastUpdated
 
-    Accounts(String accountId, Long documentNumber){
+    Accounts(Long accountId, Long documentNumber){
         this.accountId = accountId
         this.documentNumber = documentNumber
         lastUpdated = new Date()
