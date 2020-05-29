@@ -11,7 +11,7 @@ class OperationTypeService {
     @Autowired
     private OperationTypeRepository operationTypeRepository
 
-    def salvar(operationTypeId, description, increaseValue){
+    def save(operationTypeId, description, increaseValue){
         operationTypeRepository.save(new OperationType(operationTypeId, description, increaseValue))
     }
 

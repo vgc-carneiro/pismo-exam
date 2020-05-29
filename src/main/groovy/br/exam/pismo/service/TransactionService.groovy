@@ -11,7 +11,7 @@ class TransactionService {
     @Autowired
     TransactionRepository transactionRepository
 
-    def salvar(accounts, operationType, amount, eventDate){
+    def save(accounts, operationType, amount, eventDate){
         if((operationType.increaseValue && amount > 0) || (!operationType.increaseValue && amount < 0)){
             transactionRepository.save(new Transaction(accounts, operationType, amount, eventDate))
         }else{

@@ -4,6 +4,7 @@ package br.exam.pismo.controller
 //import br.exam.pismo.model.OperationType
 import br.exam.pismo.service.AccountsService
 import br.exam.pismo.service.OperationTypeService
+import br.exam.pismo.service.SequenceService
 import br.exam.pismo.service.TransactionService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
@@ -22,16 +23,21 @@ class IndexController {
     OperationTypeService operationTypeService
     @Autowired
     TransactionService transactionService
+    @Autowired
+    SequenceService sequenceService
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
     @ApiOperation(value = 'Hello world')
     String index(){
-//        operationTypeService.salvar(1L, 'COMPRA À VISTA', false)
-//        operationTypeService.salvar(2L, 'COMPRA PARCELADA', false)
-//        operationTypeService.salvar(3L, 'SAQUE', false)
-//        operationTypeService.salvar(4L, 'PAGAMENTO', true)
-//        accountsService.salvar(123L, 123333333L)
-//        transactionService.salvar(accountsService.get(123L).get(), operationTypeService.get(4L).get(), 115.5, null)
+//        operationTypeService.save(1L, 'COMPRA À VISTA', false)
+//        operationTypeService.save(2L, 'COMPRA PARCELADA', false)
+//        operationTypeService.save(3L, 'SAQUE', false)
+//        operationTypeService.save(4L, 'PAGAMENTO', true)
+//        accountsService.save(123L, 123333333L)
+//        transactionService.save(accountsService.get(123L).get(), operationTypeService.get(4L).get(), 115.5, null)
+
+//        sequenceService.save(Accounts.class.toString())
+//        sequenceService.getSequenceNextValue(Accounts.class.toString())
 
         'Hello World!'
     }

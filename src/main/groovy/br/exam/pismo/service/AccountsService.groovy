@@ -11,7 +11,7 @@ class AccountsService {
     @Autowired
     private AccountsRepository accountsRepository
 
-    def salvar(accountId, Long documentNumber){
+    def save(accountId, Long documentNumber){
         accountsRepository.save(new Accounts(accountId, documentNumber))
     }
 
