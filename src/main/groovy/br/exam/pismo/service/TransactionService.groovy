@@ -1,5 +1,6 @@
 package br.exam.pismo.service
 
+import br.exam.pismo.exceptions.IllegalTransactionException
 import br.exam.pismo.model.Transaction
 import br.exam.pismo.repository.TransactionRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,7 +16,7 @@ class TransactionService {
         if((operationType.increaseValue && amount > 0) || (!operationType.increaseValue && amount < 0)){
             transactionRepository.save(new Transaction(accounts, operationType, amount, eventDate))
         }else{
-            throw new Exception('Amount not corresponding to operationType')
+            throw new IllegalTransactionException('Amount not corresponding to a operation type.')
         }
     }
 

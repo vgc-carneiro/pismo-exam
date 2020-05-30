@@ -22,4 +22,7 @@ class Transaction {
         this.eventDate = eventDate?: new Date()
     }
 
+    String getTransactionId() {
+        return transactionId.toString()
+    }
 }

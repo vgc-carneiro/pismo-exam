@@ -1,6 +1,8 @@
 package br.exam.pismo.handler
 
 import br.exam.pismo.ApiError
+import br.exam.pismo.exceptions.IllegalTransactionException
+import br.exam.pismo.exceptions.PropertyNotFoundException
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.dao.DataAccessResourceFailureException
@@ -32,6 +34,20 @@ class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NoSuchElementException.class)
     protected ResponseEntity<Object> handleNoSuchElementException(NoSuchElementException ex){
         ApiError apiError = new ApiError(HttpStatus.NOT_FOUND)
+        apiError.message = ex.message
+        return buildResponseEntity(apiError)
+    }
+
+    @ExceptionHandler(IllegalTransactionException.class)
+    protected ResponseEntity<Object> handleIllegalTransactionException(IllegalTransactionException ex){
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST)
+        apiError.message = ex.message
+        return buildResponseEntity(apiError)
+    }
+
+    @ExceptionHandler(PropertyNotFoundException.class)
+    protected ResponseEntity<Object> handlePropertyNotFoundException(PropertyNotFoundException ex){
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST)
         apiError.message = ex.message
         return buildResponseEntity(apiError)
     }
