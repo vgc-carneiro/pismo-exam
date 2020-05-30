@@ -1,7 +1,9 @@
-db.createCollection('accounts');
-db.getCollection("accounts").createIndex({ "documentNumber": 1 }, {unique: true});
+use pismo-transactions
 
-db.createCollection('operation-type');
+db.createCollection('accounts')
+db.getCollection("accounts").createIndex({ "documentNumber": 1 }, {unique: true})
+
+db.createCollection('operation-type')
 db.getCollection("operation-type").insertMany([
     {
         "_id": NumberLong(1),
@@ -23,11 +25,11 @@ db.getCollection("operation-type").insertMany([
         "description": "PAGAMENTO",
         "increaseValue": true
     },
-]);
+])
 
-db.createCollection('transaction');
+db.createCollection('transaction')
 db.getCollection("transaction").createIndexes([
     {"accounts._id": 1},
     {"operationType._id": 1},
     {"amount": 1}
-]);
+])
