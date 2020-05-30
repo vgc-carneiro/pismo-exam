@@ -28,7 +28,7 @@ class IndexController {
 
     @RequestMapping(value = '/', method = RequestMethod.GET)
     @ApiOperation(value = 'Hello world')
-    String index(){
+    def index(){
 //        operationTypeService.save(1L, 'COMPRA À VISTA', false)
 //        operationTypeService.save(2L, 'COMPRA PARCELADA', false)
 //        operationTypeService.save(3L, 'SAQUE', false)

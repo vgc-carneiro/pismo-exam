@@ -10,13 +10,11 @@ class OperationType {
     Long operationTypeId
     String description
     Boolean increaseValue
-    Date lastUpdated
 
     OperationType(Long operationTypeId, String description, Boolean increaseValue){
         this.operationTypeId = operationTypeId
         this.description = description
         this.increaseValue = increaseValue
-        lastUpdated = new Date()
     }
 
 }
