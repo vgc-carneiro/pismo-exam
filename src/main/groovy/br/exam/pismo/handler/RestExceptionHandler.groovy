@@ -29,6 +29,13 @@ class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return buildResponseEntity(apiError)
     }
 
+    @ExceptionHandler(NoSuchElementException.class)
+    protected ResponseEntity<Object> handleNoSuchElementException(NoSuchElementException ex){
+        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND)
+        apiError.message = ex.message
+        return buildResponseEntity(apiError)
+    }
+
     private ResponseEntity<Object> buildResponseEntity(ApiError apiError) {
         return new ResponseEntity<>(apiError, apiError.getStatus())
     }
