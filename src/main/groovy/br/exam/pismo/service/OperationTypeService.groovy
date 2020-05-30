@@ -11,10 +11,6 @@ class OperationTypeService {
     @Autowired
     private OperationTypeRepository operationTypeRepository
 
-    def save(operationTypeId, description, increaseValue){
-        operationTypeRepository.save(new OperationType(operationTypeId, description, increaseValue))
-    }
-
     def findAll(){
         operationTypeRepository.findAll()
     }
