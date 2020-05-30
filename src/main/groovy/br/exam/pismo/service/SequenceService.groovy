@@ -21,8 +21,10 @@ class SequenceService {
     def getSequenceNextValue(sequenceName){
         def sequence = sequenceRepository.findById(sequenceName)
 
-        if(sequence.isEmpty())
-            return null
+        if(sequence.isEmpty()){
+            save(sequenceName)
+            sequence = sequenceRepository.findById(sequenceName)
+        }
 
         def current = sequence.get().value
         sequence.get().with {
