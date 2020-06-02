@@ -27,7 +27,7 @@ class AccountsController {
     @RequestMapping(value = '/accounts', method = RequestMethod.POST)
     @ApiOperation(value = 'Create account')
     ResponseEntity<Accounts> create(@RequestBody AccountsDTO payload){
-        new ResponseEntity<Accounts>(accountsService.save(sequenceService.getSequenceNextValue(Accounts.class.toString()), payload.document_number), HttpStatus.CREATED)
+        new ResponseEntity<Accounts>(accountsService.save(sequenceService.getSequenceNextValue(Accounts.class.toString()), payload.document_number, payload.available_credit_limit), HttpStatus.CREATED)
     }
 
     @RequestMapping(value = '/accounts/{accountId}', method = RequestMethod.GET)

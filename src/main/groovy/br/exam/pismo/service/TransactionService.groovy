@@ -11,10 +11,15 @@ class TransactionService {
 
     @Autowired
     TransactionRepository transactionRepository
+    @Autowired
+    AccountsService accountsService
 
     def save(accounts, operationType, amount, eventDate){
         if((operationType.increaseValue && amount > 0) || (!operationType.increaseValue && amount < 0)){
-            transactionRepository.save(new Transaction(accounts, operationType, amount, eventDate))
+            accounts = accountsService.calculateCredit(accounts, operationType, amount)
+            Transaction transaction = transactionRepository.save(new Transaction(accounts, operationType, amount, eventDate))
+            accountsService.update(accounts)
+            return transaction
         }else{
             throw new IllegalTransactionException('Amount not corresponding to a operation type.')
         }
