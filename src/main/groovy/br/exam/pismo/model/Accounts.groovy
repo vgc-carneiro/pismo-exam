@@ -9,11 +9,16 @@ class Accounts {
     @Id
     final Long accountId
     final Long documentNumber
+    Double creditLimit
+    Double availableCreditLimit
     Date lastUpdated
 
-    Accounts(accountId, documentNumber){
+    Accounts(accountId, documentNumber, creditLimit){
+        creditLimit = creditLimit ?: 0
         this.accountId = accountId
         this.documentNumber = documentNumber
+        this.creditLimit = creditLimit
+        this.availableCreditLimit = creditLimit
         lastUpdated = new Date()
     }
 
