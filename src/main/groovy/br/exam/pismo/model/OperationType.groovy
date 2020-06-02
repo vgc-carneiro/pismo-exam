@@ -11,7 +11,7 @@ class OperationType {
     String description
     Boolean increaseValue
 
-    OperationType(Long operationTypeId, String description, Boolean increaseValue){
+    OperationType(operationTypeId, description, increaseValue){
         this.operationTypeId = operationTypeId
         this.description = description
         this.increaseValue = increaseValue
